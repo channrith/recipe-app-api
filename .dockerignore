@@ -1,0 +1,39 @@
+# Git
+.git
+.gitignore
+
+# Python (root and app folder)
+__pycache__
+*/__pycache__
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info
+*.egg
+.venv
+venv
+env
+app/.venv
+app/venv
+app/env
+.pytest_cache
+.mypy_cache
+.ruff_cache
+.coverage
+htmlcov
+
+# Django
+*.log
+db.sqlite3
+local_settings.py
+
+# IDE / editor
+.idea
+.vscode
+.cursor
+
+# Docs and misc
+*.md
+.env
+.env.*
