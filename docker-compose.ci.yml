@@ -1,0 +1,27 @@
+services:
+  app:
+    build:
+      context: .
+      args:
+        DEV: "true"
+    environment:
+      DB_HOST: postgres
+      DB_PORT: "5432"
+      DB_NAME: app_recipe_db
+      DB_USER: app_recipe_db_user
+      DB_PASSWORD: secret
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  postgres:
+    image: postgres:15-alpine
+    environment:
+      POSTGRES_DB: app_recipe_db
+      POSTGRES_USER: app_recipe_db_user
+      POSTGRES_PASSWORD: secret
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U app_recipe_db_user -d app_recipe_db"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
