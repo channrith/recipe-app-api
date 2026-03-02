@@ -8,7 +8,16 @@ services:
       - "8000:8000"
     volumes:
       - ./app:/app
+    environment:
+      DB_HOST: postgres
+      DB_PORT: "5432"
+      DB_NAME: app_recipe_db
+      DB_USER: app_recipe_db_user
+      DB_PASSWORD: secret
     command: python manage.py runserver 0.0.0.0:8000
+    networks:
+      - local_docker
+
 
 networks:
   local_docker:
